@@ -1,0 +1,128 @@
+<div class="dashboard-container">
+    <header>
+      <div class="logo-container">
+        <a id="logo" (click)="home()"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/800px-Ford_logo_flat.svg.png" alt="Ford Logo"></a>
+        <div class="header-title">
+          <h1>FORD CONNECTED VEHICLES</h1>
+          <p>Dashboard de Monitoramento em Tempo Real</p>
+        </div>
+      </div>
+      <button class="logout-btn" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Sair
+      </button>
+    </header>
+
+    <div class="main-content">
+      <!-- Vehicle Selection Section -->
+      <div class="selection-card">
+        <h2 class="section-title"><i class="fas fa-search"></i> Selecionar Veículo</h2>
+
+        <div class="search-container">
+          <input type="text" [(ngModel)]="searchModel" placeholder="Digite o modelo do veículo"
+                 (input)="filterModels()" (focus)="showModelList = true">
+          <button (click)="searchByModel()">
+            <i class="fas fa-search"></i> Buscar
+          </button>
+        </div>
+
+        <div class="model-suggestions" *ngIf="showModelList && filteredModels.length > 0">
+          <div *ngFor="let model of filteredModels" (click)="selectModel(model)">
+            <i class="fas fa-car"></i> {{model}}
+          </div>
+        </div>
+
+        <div class="vin-section">
+          <h2 class="section-title"><i class="fas fa-barcode"></i> Consultar por VIN</h2>
+          <div class="vin-container">
+            <input type="text" [(ngModel)]="vin" placeholder="Digite o VIN do veículo">
+            <button (click)="getVehicleData()">
+              <i class="fas fa-search"></i> Consultar
+            </button>
+          </div>
+
+          <div class="vin-result" *ngIf="vinData">
+            <h3>Dados do Veículo - VIN: {{vin}}</h3>
+            <div class="vin-metrics">
+              <div class="vin-metric">
+                <p class="metric-label"><i class="fas fa-tachometer-alt"></i> Odômetro</p>
+                <p class="metric-value">{{vinData.odometro | number}} km</p>
+              </div>
+              <div class="vin-metric">
+                <p class="metric-label"><i class="fas fa-gas-pump"></i> Combustível</p>
+                <p class="metric-value">{{vinData.nivelCombustivel}}%</p>
+              </div>
+              <div class="vin-metric">
+                <p class="metric-label"><i class="fas fa-power-off"></i> Status</p>
+                <p class="metric-value">{{vinData.status === 'on' ? 'Ligado' : 'Desligado'}}</p>
+              </div>
+              <div class="vin-metric">
+                <p class="metric-label"><i class="fas fa-map-marker-alt"></i> Localização</p>
+                <p class="metric-value">{{vinData.lat}}, {{vinData.long}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção de exibição de veículos -->
+      <div class="vehicle-display">
+        <div class="vehicle-image-container">
+          <div class="image-placeholder" *ngIf="!selectedVehicleImage">
+            <i class="fas fa-car"></i>
+            <p>Selecione um veículo para visualizar</p>
+          </div>
+          <img *ngIf="selectedVehicleImage" [src]="selectedVehicleImage" [alt]="selectedModel"
+          class="vehicle-image">
+
+        </div>
+
+        <div class="vehicle-details-card" *ngIf="selectedModel">
+          <h2 class="vehicle-title">Ford {{selectedModel}}</h2>
+          <p class="vehicle-subtitle">
+            <i class="fas fa-info-circle"></i> Dados técnicos e estatísticas
+          </p>
+
+          <div class="metrics-grid">
+            <div class="metric-item">
+              <p class="metric-label"><i class="fas fa-chart-line"></i> Total de Vendas</p>
+              <p class="metric-value">{{selectedVehicle.volumetotal | number}}</p>
+            </div>
+            <div class="metric-item">
+              <p class="metric-label"><i class="fas fa-wifi"></i> Conectados</p>
+              <p class="metric-value">{{selectedVehicle.connected | number}}</p>
+            </div>
+            <div class="metric-item">
+              <p class="metric-label"><i class="fas fa-sync-alt"></i> Atualizações de Software</p>
+              <p class="metric-value">{{selectedVehicle.softwareUpdates | number}}</p>
+            </div>
+            <div class="metric-item">
+              <p class="metric-label"><i class="fas fa-percentage"></i> Taxa de Conectividade</p>
+              <p class="metric-value">{{(selectedVehicle.connected / selectedVehicle.volumetotal * 100).toFixed(1)}}%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Métricas Globais-->
+    <div class="selection-card" style="margin: 0 30px 30px;">
+      <h2 class="section-title"><i class="fas fa-globe-americas"></i> Métricas Globais</h2>
+      <div class="metrics-container">
+        <div class="metric-card">
+          <h3><i class="fas fa-car"></i> Total de Veículos</h3>
+          <p class="metric-value">{{totalVehicles | number}}</p>
+          <p class="metric-unit">Unidades</p>
+        </div>
+        <div class="metric-card">
+          <h3><i class="fas fa-network-wired"></i> Veículos Conectados</h3>
+          <p class="metric-value">{{totalConnected | number}}</p>
+          <p class="metric-unit">Unidades</p>
+        </div>
+        <div class="metric-card">
+          <h3><i class="fas fa-cloud-download-alt"></i> Atualizações de Software</h3>
+          <p class="metric-value">{{totalUpdates | number}}</p>
+          <p class="metric-unit">Unidades</p>
+        </div>
+      </div>
+    </div>
+  </div>

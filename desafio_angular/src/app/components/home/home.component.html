@@ -1,0 +1,24 @@
+<div class="sidebar" [class.active]="menuAberto">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/800px-Ford_logo_flat.svg.png" alt="Ford Logo" class="logo">
+  <ul>
+    <li><a id="home">Home</a></li>
+    <li><a (click)="goToDashboard()">Dashboard</a></li>
+    <li><a id="logout" (click)="logout()">Sair</a></li>
+  </ul>
+</div>
+
+<!-- botão de abrir o menu -->
+<button class="menu-btn" (click)="toggleMenu()">☰</button>
+
+<!-- overlay que escurece o fundo -->
+<div class="overlay" *ngIf="menuAberto" (click)="toggleMenu()"></div>
+
+<!-- conteúdo principal -->
+<div class="home-container">
+  <div class="welcome-card">
+    <h1>Sistema de dados<br>FORD</h1>
+    <p>Seja bem-vindo(a)!</p>
+    <div class="button-group">
+    </div>
+  </div>
+</div>

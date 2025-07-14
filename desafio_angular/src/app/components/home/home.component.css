@@ -1,0 +1,113 @@
+/* Menu lateral */
+.sidebar {
+  position: fixed;
+  left: -250px;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: #20232a;
+  color: white;
+  padding: 20px;
+  transition: 0.3s ease;
+  z-index: 1000;
+}
+.sidebar.active {
+  left: 0;
+}
+.sidebar .logo {
+  width: 100%;
+  margin-bottom: 30px;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar ul li {
+  margin: 20px 0;
+}
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Botão do menu */
+.menu-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #20232a;
+  z-index: 1100;
+}
+
+/* Fundo escurecido */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 900;
+}
+
+/* Conteúdo principal */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('/assets/img/ranger.png') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 100;
+  opacity: 60%;
+}
+
+.welcome-card h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.welcome-card p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.button-group button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+.btn-secondary {
+  background-color: #dc3545;
+  color: white;
+}
+a {
+  cursor: pointer;
+
+}
+#logout {
+color: #8d4148;
+}
+#home {
+  color: #4a647e;
+  text-decoration: underline;
+}

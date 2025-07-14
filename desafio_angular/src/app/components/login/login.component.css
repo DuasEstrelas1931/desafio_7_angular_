@@ -1,0 +1,88 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 1rem;
+  gap: 3rem;
+  flex-wrap: wrap;
+  background: url('/assets/img/ford_ranger.png') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.login-form {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 300px;
+  opacity: 90%;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #4d9fef;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #555;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #4d9fef;
+  outline: none;
+}
+
+.alert-danger {
+  background-color: #ffe0e0;
+  color: #b30000;
+  padding: 0.7rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.btn.btn-primary {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #4d9fef;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn.btn-primary:disabled {
+  background-color: #a0c5f3;
+  cursor: not-allowed;
+}
+
+.btn.btn-primary:hover:not(:disabled) {
+  background-color: #3a82cc;
+}
