@@ -96,7 +96,7 @@ http://localhost:4200
 ```bash
 Método	Rota	Descrição
 POST	/login	Autenticação de usuário
-GET	    /vehicles	Lista todos os veículos
+GET	/vehicles	Lista todos os veículos
 POST	/vehicleData	Consulta dados por VIN
 ```
 
