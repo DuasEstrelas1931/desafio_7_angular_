@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +26,14 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     this.router.navigate(['/login']);
   }
+  
+  
+  isAuthenticated(): Observable<boolean> {
+    // Simplesmente retorna um Observable com o resultado de isLoggedIn()
+    const isLoggedIn = this.isLoggedIn(); // Usa seu método existente para verificar a presença da chave
+    console.log(`AuthService.isAuthenticated() - Retornando:`, isLoggedIn);
+    return of(isLoggedIn);
+  }
 
   home(){
     this.router.navigate(['/home']);
@@ -36,3 +47,7 @@ export class AuthService {
     return !!localStorage.getItem('currentUser');
   }
 }
+function decodeToken() {
+  throw new Error('Function not implemented.');
+}
+
